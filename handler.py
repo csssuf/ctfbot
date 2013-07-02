@@ -329,5 +329,5 @@ class MyHandler():
         if match:
             self.do_urls(match, send)
             
-        match = re.match("(MCA-|mca-)?[0-9A-Fa-f]{8}", msg)
+        match = re.search("(MCA-|mca-)?[0-9A-Fa-f]{8}", msg)
         if match: send(nick + ", sharing flags or otherwise spoiling puzzles in the IRC channel during the competition is against the rules, and makes it less fun for everyone!")
