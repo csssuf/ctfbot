@@ -328,3 +328,6 @@ class MyHandler():
         match = re.search(r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»....]))", msg)
         if match:
             self.do_urls(match, send)
+            
+        match = re.match("(MCA-|mca-)?[0-9A-Fa-f]{8}")
+        if match: send(nick + ", sharing flags or otherwise spoiling puzzles in the IRC channel during the competition is against the rules, and makes it less fun for everyone!"")
