@@ -304,7 +304,11 @@ class MyHandler():
                 for x in self.modules.values():
                     imp.reload(x)
             # everything below this point requires admin
-            if nick in ADMINS:
+            isadmin = False
+            for i in ADMINS:
+                if i in e.source:
+                    isadmin = True
+            if isadmin:
                 if cmd[1:] == 'cignore':
                     self.ignored = []
                     send("Ignore list cleared.")
