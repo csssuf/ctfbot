@@ -19,7 +19,7 @@ import logging
 import traceback
 import imp
 import handler
-import server
+#import server
 from irc.bot import ServerSpec, SingleServerIRCBot
 from config import CHANNEL, CTRLCHAN, NICK, NICKPASS, HOST, ADMINS, CTRLKEY
 from os.path import basename
@@ -74,9 +74,9 @@ class IrcBot(SingleServerIRCBot):
             c.privmsg(target, output)
         imp.reload(handler)
         imp.reload(server)
-        self.server.shutdown()
-        self.server.socket.close()
-        self.server = server.init_server(self)
+        #self.server.shutdown()
+        #self.server.socket.close()
+        #self.server = server.init_server(self)
         # preserve data
         data = self.handler.get_data()
         self.handler = handler.BotHandler()
@@ -186,7 +186,7 @@ def main():
     """
     logging.basicConfig(level=logging.INFO)
     bot = IrcBot(CHANNEL, NICK, NICKPASS, HOST)
-    bot.server = server.init_server(bot)
+    #bot.server = server.init_server(bot)
     bot.start()
 
 if __name__ == '__main__':
